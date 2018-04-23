@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Vehicle Manager</string>
+    <string name="str_VIN">VIN</string>
+    <string name="str_YEAR">Year</string>
+    <string name="str_MAKE">Make</string>
+    <string name="str_MODEL">Model</string>
+    <string name="str_DESC">Description</string>
+    <string name="str_btn_add">Add Vehicle</string>
+    <string name="str_btn_cancel">Cancel</string>
+    <string-array name="strVehicleList">
+        <item>2014 Toyota Prius</item>
+        <item>2003 Dodge Neon R/T</item>
+        <item>2000 Ford F150 LARIAT</item>
+    </string-array>
+</resources>
