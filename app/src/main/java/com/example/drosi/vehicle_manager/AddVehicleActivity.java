@@ -48,7 +48,8 @@ public class AddVehicleActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AddVehicleActivity.this, MainActivity.class));
+                //startActivity(new Intent(AddVehicleActivity.this, MainActivity.class));
+                finish();
             }
         });
 

@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -57,6 +58,20 @@ public class MainActivity extends AppCompatActivity {
                         delete.setVisibility(View.INVISIBLE);
                     }
                 }
+            }
+        });
+
+        // Create the click listener for the children of the expandablelistview
+        vehicleList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                // When the child is clicked we are only interested in what vehicle was clicked
+                // Thus, we only need to worry about the group position of the click
+                Intent maintenanceIntent = new Intent(MainActivity.this, VehicleSummaryActivity.class);
+                maintenanceIntent.putExtra("vehicleName", adapter.groupNames.get(groupPosition).toString());
+                maintenanceIntent.putExtra("vehicleID", adapter.dbGroupIds[groupPosition].toString());
+                startActivity(maintenanceIntent);
+                return false;
             }
         });
     }

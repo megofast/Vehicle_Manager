@@ -6,17 +6,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.media.Image;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +21,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     // The arraylists to store the vehicle information
     public ArrayList<String> groupNames = new ArrayList<String>();
-    private String[] dbGroupIds;    // Stores the database IDs so the proper record is deleted
+    public String[] dbGroupIds;    // Stores the database IDs so the proper record is deleted
     public List<List<String>> childNames = new ArrayList<List<String>>();
     public ArrayList<ImageView> deleteButtons = new ArrayList<ImageView>();
 
@@ -145,6 +141,8 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
                                         delete.setVisibility(View.INVISIBLE);
                                     }
                                 }
+
+                                // Update the list contents and refresh the list
                                 groupNames.remove(groupPosition);
                                 notifyDataSetChanged();
                                 break;
@@ -184,7 +182,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return false;
+        return true;
     }
 
     public ArrayList<ImageView> getDeleteImages() {
