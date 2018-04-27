@@ -56,7 +56,7 @@ public class AddVehicleActivity extends AppCompatActivity {
     }
 
     public void addData(String vin, String year, String make, String model, String desc) {
-        boolean insertData = mDatabaseHelper.addData(vin, year, make, model, desc);
+        boolean insertData = mDatabaseHelper.addVehicleData(vin, year, make, model, desc);
 
         if (insertData) {
             // Toast the user for a successful insert

@@ -24,6 +24,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     public String[] dbGroupIds;    // Stores the database IDs so the proper record is deleted
     public List<List<String>> childNames = new ArrayList<List<String>>();
     public ArrayList<ImageView> deleteButtons = new ArrayList<ImageView>();
+    private DatabaseHelper mDatabaseHelper;
 
     //Context context;
     private Activity context;
@@ -32,9 +33,9 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         this.context = context;
 
         // In the constructor, Get the database data and store it into the group/child arrays
-        DatabaseHelper mDatabaseHelper = new DatabaseHelper(context);
+        mDatabaseHelper = new DatabaseHelper(context);
 
-        Cursor data = mDatabaseHelper.getData("SELECT * FROM " + mDatabaseHelper.TABLE_NAME);
+        Cursor data = mDatabaseHelper.getData("SELECT * FROM " + mDatabaseHelper.vehicleTable.getTableName());
 
         // Initialize the visibility array with values showing the Xs are invisible
         int groupCount = data.getCount();
@@ -191,12 +192,11 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     private boolean deleteVehicle(int groupID) {
         // Load the database
-        DatabaseHelper mDatabaseHelper = new DatabaseHelper(context);
         SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
 
         String whereClause = "id=?";
         String[] whereArgs = new String[] {dbGroupIds[groupID]};
-        int delData = db.delete(mDatabaseHelper.TABLE_NAME, whereClause, whereArgs);
+        int delData = db.delete(mDatabaseHelper.vehicleTable.getTableName(), whereClause, whereArgs);
         if (delData > 0) {
             // Delete operation was a success!
             return true;

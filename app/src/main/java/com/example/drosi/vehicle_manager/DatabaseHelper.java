@@ -7,45 +7,58 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String TABLE_NAME = "vehicle";
-    public static final String COLUMN_ID = "id";
-    public static final String COLUMN_VIN = "vin";
-    public static final String COLUMN_YEAR = "year";
-    public static final String COLUMN_MAKE = "make";
-    public static final String COLUMN_MODEL = "model";
-    public static final String COLUMN_DESC = "description";
+    public static final String DATABASE_NAME = "vehiclemanager.db";
+    public static final int DATABASE_VERSION = 1;
+
+    // Create the table classes
+    public static final VehicleTable vehicleTable = new VehicleTable();
+    public static final MaintenanceTable maintenanceTable = new MaintenanceTable();
 
     public DatabaseHelper(Context context) {
-        super(context, TABLE_NAME, null, 1);
+        // This is where the database is created.
+        // Version can be updated when the tables are modified, this keeps the app from crashing
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableSQL = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_VIN + " TEXT, " +
-                COLUMN_YEAR + " TEXT, " +
-                COLUMN_MAKE + " TEXT, " +
-                COLUMN_MODEL + " TEXT, " +
-                COLUMN_DESC + " TEXT)";
+        // Create the vehicle table
+        String createTableSQL = "CREATE TABLE " + vehicleTable.getTableName() + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                vehicleTable.getColumnVin() + " TEXT, " +
+                vehicleTable.getColumnYear() + " TEXT, " +
+                vehicleTable.getColumnMake() + " TEXT, " +
+                vehicleTable.getColumnModel() + " TEXT, " +
+                vehicleTable.getColumnDesc() + " TEXT)";
+        db.execSQL(createTableSQL);
+
+        // Create the maintenance table
+        createTableSQL = "CREATE TABLE " + maintenanceTable.getTableName() + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                maintenanceTable.getColumnVid() + " TEXT, " +
+                maintenanceTable.getColumnDate() + " TEXT, " +
+                maintenanceTable.getColumnMileage() + " TEXT, " +
+                maintenanceTable.getColumnType() + " TEXT, " +
+                maintenanceTable.getColumnNotes() + " TEXT)";
         db.execSQL(createTableSQL);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        // This method is only called when you upgrade the database, ie change the database_version variable
+        db.execSQL("DROP TABLE IF EXISTS " + vehicleTable.getTableName());
+        db.execSQL("DROP TABLE IF EXISTS " + maintenanceTable.getTableName());
         onCreate(db);
     }
 
-    public boolean addData(String vin, String year, String make, String model, String desc) {
+    public boolean addVehicleData(String vin, String year, String make, String model, String desc) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_VIN, vin);
-        contentValues.put(COLUMN_YEAR, year);
-        contentValues.put(COLUMN_MAKE, make);
-        contentValues.put(COLUMN_MODEL, model);
-        contentValues.put(COLUMN_DESC, desc);
+        contentValues.put(vehicleTable.getColumnVin(), vin);
+        contentValues.put(vehicleTable.getColumnYear(), year);
+        contentValues.put(vehicleTable.getColumnMake(), make);
+        contentValues.put(vehicleTable.getColumnModel(), model);
+        contentValues.put(vehicleTable.getColumnDesc(), desc);
 
-        long result = db.insert(TABLE_NAME, null, contentValues);
+        long result = db.insert(vehicleTable.getTableName(), null, contentValues);
 
         if (result == -1) {
             // The insert failed
@@ -61,4 +74,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query, null);
         return data;
     }
+    
 }
