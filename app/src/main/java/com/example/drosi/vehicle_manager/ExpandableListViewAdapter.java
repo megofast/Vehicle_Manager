@@ -20,22 +20,22 @@ import java.util.List;
 public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     // The arraylists to store the vehicle information
-    public ArrayList<String> groupNames = new ArrayList<String>();
-    public String[] dbGroupIds;    // Stores the database IDs so the proper record is deleted
-    public List<List<String>> childNames = new ArrayList<List<String>>();
-    public ArrayList<ImageView> deleteButtons = new ArrayList<ImageView>();
+    ArrayList<String> groupNames = new ArrayList<>();
+    String[] dbGroupIds;    // Stores the database IDs so the proper record is deleted
+    private List<List<String>> childNames = new ArrayList<List<String>>();
+    private ArrayList<ImageView> deleteButtons = new ArrayList<>();
     private DatabaseHelper mDatabaseHelper;
 
     //Context context;
     private Activity context;
 
-    public ExpandableListViewAdapter(Activity context) {
+    ExpandableListViewAdapter(Activity context) {
         this.context = context;
 
         // In the constructor, Get the database data and store it into the group/child arrays
         mDatabaseHelper = new DatabaseHelper(context);
 
-        Cursor data = mDatabaseHelper.getData("SELECT * FROM " + mDatabaseHelper.vehicleTable.getTableName());
+        Cursor data = mDatabaseHelper.getData("SELECT * FROM " + VehicleTable.getTableName());
 
         // Initialize the visibility array with values showing the Xs are invisible
         int groupCount = data.getCount();
@@ -62,7 +62,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
             dbGroupIds[data.getPosition()] = data.getString(0);
 
             // Add the vin and description as child elements
-            List<String> groupChildren = new ArrayList<String>();
+            List<String> groupChildren = new ArrayList<>();
             groupChildren.add(data.getString(1));
             groupChildren.add(data.getString(5));
             childNames.add(groupChildren);
@@ -112,12 +112,12 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.group_item, null);
         }
-        TextView groupItem = (TextView) convertView.findViewById(R.id.groupName);
+        TextView groupItem = convertView.findViewById(R.id.groupName);
         groupItem.setTypeface(null, Typeface.BOLD);
         groupItem.setText(groupName);
 
         // Create the red X for deleting vehicles
-        final ImageView deleteImage = (ImageView) convertView.findViewById(R.id.group_delete);
+        final ImageView deleteImage = convertView.findViewById(R.id.group_delete);
         deleteButtons.set(groupPosition, deleteImage);
 
         // Add the click listener for the deleting x
@@ -175,8 +175,8 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.child_item, null);
         }
 
-        TextView item = (TextView) convertView.findViewById(R.id.infoItem);
-        ImageView image = (ImageView) convertView.findViewById(R.id.infoImage);
+        TextView item = convertView.findViewById(R.id.infoItem);
+        ImageView image = convertView.findViewById(R.id.infoImage);
         item.setText(itemName);
         return convertView;
     }
@@ -186,7 +186,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
-    public ArrayList<ImageView> getDeleteImages() {
+    ArrayList<ImageView> getDeleteImages() {
         return deleteButtons;
     }
 
@@ -196,7 +196,8 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
         String whereClause = "id=?";
         String[] whereArgs = new String[] {dbGroupIds[groupID]};
-        int delData = db.delete(mDatabaseHelper.vehicleTable.getTableName(), whereClause, whereArgs);
+        int delData = db.delete(VehicleTable.getTableName(), whereClause, whereArgs);
+
         if (delData > 0) {
             // Delete operation was a success!
             return true;
