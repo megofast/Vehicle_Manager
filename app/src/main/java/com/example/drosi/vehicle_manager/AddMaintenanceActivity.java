@@ -25,6 +25,7 @@ public class AddMaintenanceActivity extends AppCompatActivity {
         final EditText txtDate = findViewById(R.id.maintenanceDate);
         EditText txtNotes = findViewById(R.id.txtNotes);
         Button submitRecord = findViewById(R.id.btnAddMaintenance);
+        Button cancel = findViewById(R.id.btnCancel);
 
         // This sets up a multiline textbox that has a done button instead of carriage return
         txtNotes.setImeOptions(EditorInfo.IME_ACTION_DONE);
@@ -67,6 +68,16 @@ public class AddMaintenanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Add the records to the database
+
+            }
+        });
+
+        // Add click listener for the cancel button
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Close the activity
+                finish();
             }
         });
     }

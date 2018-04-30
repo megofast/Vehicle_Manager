@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,6 +18,8 @@ public class VehicleSummaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehicle_summary);
+
+        Button btnBack = findViewById(R.id.btnBack);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAddMaintenance);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +43,14 @@ public class VehicleSummaryActivity extends AppCompatActivity {
             // There must have been an error, there is no data in the bundle
             vehicleTitle.setText("ERROR");
         }
+
+        // Add click listener for back button
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // Populate a temporary list of the data
         mData = new ArrayList<>();

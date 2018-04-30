@@ -12,15 +12,13 @@
     <string name="str_mileage">Mileage</string>
     <string name="str_date_tip">Click to select date</string>
     <string name="str_notes">Notes</string>
+    <string name="str_main_tap_tip">Tap on vin or notes to view maintenance records.</string>
+    <string name="str_back">Back</string>
     <string-array name="str_type_list">
         <item>Oil Change</item>
         <item>Tire Rotation</item>
         <item>New Tires</item>
         <item>Tune-up</item>
-    </string-array>
-    <string-array name="strVehicleList">
-        <item>2014 Toyota Prius</item>
-        <item>2003 Dodge Neon R/T</item>
-        <item>2000 Ford F150 LARIAT</item>
+        <item>Other</item>
     </string-array>
 </resources>
