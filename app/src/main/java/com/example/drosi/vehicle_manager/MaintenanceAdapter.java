@@ -43,8 +43,8 @@ public class MaintenanceAdapter extends ArrayAdapter<MaintenanceData> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.maint_row, parent, false);
 
-            viewHolder.txtDate = (TextView) convertView.findViewById(R.id.date);
-            viewHolder.txtMileage = (TextView) convertView.findViewById(R.id.mileage);
+            viewHolder.txtDate = (TextView) convertView.findViewById(R.id.maintenanceDate);
+            viewHolder.txtMileage = (TextView) convertView.findViewById(R.id.txtMileage);
             viewHolder.txtNotes = (TextView) convertView.findViewById(R.id.notes);
             viewHolder.txtType = (TextView) convertView.findViewById(R.id.type);
 

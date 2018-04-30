@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/maintenanceDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -28,12 +28,12 @@
         android:layout_marginTop="8dp"
         android:text="Oil Change"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/mileage"
-        app:layout_constraintStart_toEndOf="@+id/date"
+        app:layout_constraintEnd_toStartOf="@+id/txtMileage"
+        app:layout_constraintStart_toEndOf="@+id/maintenanceDate"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/mileage"
+        android:id="@+id/txtMileage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -53,5 +53,5 @@
         android:layout_marginTop="8dp"
         android:text="Notes:  Synthetic 5w-30"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+        app:layout_constraintTop_toBottomOf="@+id/maintenanceDate" />
 </android.support.constraint.ConstraintLayout>

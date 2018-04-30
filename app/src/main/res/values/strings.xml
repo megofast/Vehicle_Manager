@@ -6,7 +6,18 @@
     <string name="str_MODEL">Model</string>
     <string name="str_DESC">Description</string>
     <string name="str_btn_add">Add Vehicle</string>
+    <string name="str_btn_add_maintenance">Add Maintenance Record</string>
     <string name="str_btn_cancel">Cancel</string>
+    <string name="str_type">Type</string>
+    <string name="str_mileage">Mileage</string>
+    <string name="str_date_tip">Click to select date</string>
+    <string name="str_notes">Notes</string>
+    <string-array name="str_type_list">
+        <item>Oil Change</item>
+        <item>Tire Rotation</item>
+        <item>New Tires</item>
+        <item>Tune-up</item>
+    </string-array>
     <string-array name="strVehicleList">
         <item>2014 Toyota Prius</item>
         <item>2003 Dodge Neon R/T</item>

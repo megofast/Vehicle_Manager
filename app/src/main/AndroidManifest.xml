@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddVehicleActivity" />
-        <activity android:name=".VehicleSummaryActivity"></activity>
+        <activity android:name=".VehicleSummaryActivity" />
+        <activity android:name=".AddMaintenanceActivity"></activity>
     </application>
 
 </manifest>
