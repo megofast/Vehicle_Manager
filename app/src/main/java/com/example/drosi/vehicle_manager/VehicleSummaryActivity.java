@@ -63,23 +63,6 @@ public class VehicleSummaryActivity extends AppCompatActivity {
             }
         });
 
-        // Populate a temporary list of the data
-        //mData = new ArrayList<>();
-        /*
-        mData.add(new MaintenanceData("10/24/17", "48,654", "NOTES", "Oil Change"));
-        mData.add(new MaintenanceData("11/29/17", "50,654", "NOTES", "Tire Rotation"));
-        mData.add(new MaintenanceData("01/08/18", "59,893", "NOTES", "Oil Change"));
-        mData.add(new MaintenanceData("04/01/18", "64,324", "NOTES", "New Wiper Blades"));
-        mData.add(new MaintenanceData("10/24/17", "48,654", "NOTES", "Oil Change"));
-        mData.add(new MaintenanceData("11/29/17", "50,654", "NOTES", "Tire Rotation"));
-        mData.add(new MaintenanceData("01/08/18", "59,893", "NOTES", "Oil Change"));
-        mData.add(new MaintenanceData("04/01/18", "64,324", "NOTES", "New Wiper Blades"));
-        mData.add(new MaintenanceData("10/24/17", "48,654", "NOTES", "Oil Change"));
-        mData.add(new MaintenanceData("11/29/17", "50,654", "NOTES", "Tire Rotation"));
-        mData.add(new MaintenanceData("01/08/18", "59,893", "NOTES", "Oil Change"));
-        mData.add(new MaintenanceData("04/01/18", "64,324", "NOTES", "New Wiper Blades"));
-        */
-
         final MaintenanceAdapter adapter = new MaintenanceAdapter(getMaintenanceData(), getApplicationContext());
         maintenanceList.setAdapter(adapter);
     }
@@ -87,7 +70,8 @@ public class VehicleSummaryActivity extends AppCompatActivity {
     // Get the data from the database and create an arraylist with the data
     private ArrayList<MaintenanceData> getMaintenanceData() {
         DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
-        Cursor data = mDatabaseHelper.getData("SELECT * FROM " + MaintenanceTable.getTableName());
+        Cursor data = mDatabaseHelper.getData("SELECT * FROM " + MaintenanceTable.getTableName()
+                + " WHERE " + MaintenanceTable.getColumnVid() + " = " + VID);
         ArrayList<MaintenanceData> mData = new ArrayList<>();
         String vid, date, mileage, type, notes;
         // Loop through all the data
@@ -107,10 +91,5 @@ public class VehicleSummaryActivity extends AppCompatActivity {
 
         }
         return mData;
-    }
-
-    // Set the color and text of the month indicator
-    private void setMonths() {
-
     }
 }

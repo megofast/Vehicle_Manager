@@ -14,11 +14,38 @@
     <string name="str_notes">Notes</string>
     <string name="str_main_tap_tip">Tap on vin or notes to view maintenance records.</string>
     <string name="str_back">Back</string>
+    <string name="str_jan">Jan</string>
+    <string name="str_feb">Feb</string>
+    <string name="str_mar">Mar</string>
+    <string name="str_apr">Apr</string>
+    <string name="str_may">May</string>
+    <string name="str_jun">Jun</string>
+    <string name="str_jul">Jul</string>
+    <string name="str_aug">Aug</string>
+    <string name="str_sep">Sep</string>
+    <string name="str_oct">Oct</string>
+    <string name="str_nov">Nov</string>
+    <string name="str_dec">Dec</string>
     <string-array name="str_type_list">
         <item>Oil Change</item>
         <item>Tire Rotation</item>
+        <item>New Battery</item>
+        <item>Timing Belt</item>
+        <item>Serpentine Belt</item>
+        <item>Transmission Fluid/Filter</item>
+        <item>Coolant Exchange</item>
+        <item>Brake Fluid Exchange</item>
+        <item>Brake Pads</item>
+        <item>Brake Rotors</item>
         <item>New Tires</item>
-        <item>Tune-up</item>
+        <item>Spark Plugs</item>
+        <item>Plug Wires</item>
+        <item>New Coil(s)</item>
+        <item>New Wiper Blades</item>
+        <item>Engine Air Filter</item>
+        <item>Cabin Air Filter</item>
+        <item>Ball Joints</item>
+        <item>Shocks/Struts</item>
         <item>Other</item>
     </string-array>
 </resources>
