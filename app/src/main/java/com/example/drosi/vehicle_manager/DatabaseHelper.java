@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "vehiclemanager.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table structures are as follows:
     // vehicle - From VehicleTable class, no instantiation necessary as everything is static
@@ -65,6 +65,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         } else {
             // The insert succeeded
+            return true;
+        }
+    }
+
+    boolean addMaintenanceRecord(String vid, String date, String mileage, String type, String notes) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(MaintenanceTable.getColumnVid(), vid);
+        cv.put(MaintenanceTable.getColumnDate(), date);
+        cv.put(MaintenanceTable.getColumnMileage(), mileage);
+        cv.put(MaintenanceTable.getColumnType(), type);
+        cv.put(MaintenanceTable.getColumnNotes(), notes);
+
+        long result = db.insert(MaintenanceTable.getTableName(), null, cv);
+
+        if (result == -1) {
+            return false;
+        } else {
             return true;
         }
     }

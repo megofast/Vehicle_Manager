@@ -10,26 +10,22 @@
         android:id="@+id/maintenanceDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="06/16/2017"
+        android:text="06/16/18"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/type"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/monthLogo" />
 
     <TextView
         android:id="@+id/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Oil Change"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/txtMileage"
-        app:layout_constraintStart_toEndOf="@+id/maintenanceDate"
+        app:layout_constraintStart_toEndOf="@+id/imgType"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -37,21 +33,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="40dp"
         android:text="64,346 miles"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/type"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Notes:  Synthetic 5w-30"
+        app:layout_constraintStart_toEndOf="@+id/monthLogo"
+        app:layout_constraintTop_toBottomOf="@+id/imgType" />
+
+    <TextView
+        android:id="@+id/monthLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/apr"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:text="Apr"
+        android:textColor="@android:color/white"
+        android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/maintenanceDate" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/apr" />
+
+    <ImageView
+        android:id="@+id/imgType"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="false"
+        android:scaleType="fitXY"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/monthLogo"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@mipmap/ic_vehicle" />
 </android.support.constraint.ConstraintLayout>

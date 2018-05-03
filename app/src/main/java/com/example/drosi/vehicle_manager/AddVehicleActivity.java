@@ -21,15 +21,15 @@ public class AddVehicleActivity extends AppCompatActivity {
         mDatabaseHelper = new DatabaseHelper(this);
 
         // Add the add and cancel buttons
-        Button btnAdd = (Button) findViewById(R.id.btnAdd);
-        Button btnCancel = (Button) findViewById(R.id.btnCancel);
+        Button btnAdd = findViewById(R.id.btnAdd);
+        Button btnCancel = findViewById(R.id.btnCancel);
 
         // Declare the textboxes to get the users data
-        final EditText txtVIN = (EditText) findViewById(R.id.txtVIN);
-        final EditText txtYEAR = (EditText) findViewById(R.id.txtYEAR);
-        final EditText txtMAKE = (EditText) findViewById(R.id.txtMAKE);
-        final EditText txtMODEL = (EditText) findViewById(R.id.txtMODEL);
-        final EditText txtDESC = (EditText) findViewById(R.id.txtDESC);
+        final EditText txtVIN = findViewById(R.id.txtVIN);
+        final EditText txtYEAR = findViewById(R.id.txtYEAR);
+        final EditText txtMAKE = findViewById(R.id.txtMAKE);
+        final EditText txtMODEL = findViewById(R.id.txtMODEL);
+        final EditText txtDESC = findViewById(R.id.txtDESC);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +48,7 @@ public class AddVehicleActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(AddVehicleActivity.this, MainActivity.class));
+                startActivity(new Intent(AddVehicleActivity.this, MainActivity.class));
                 finish();
             }
         });

@@ -68,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 // When the child is clicked we are only interested in what vehicle was clicked
                 // Thus, we only need to worry about the group position of the click
                 Intent maintenanceIntent = new Intent(MainActivity.this, VehicleSummaryActivity.class);
-                maintenanceIntent.putExtra("vehicleName", adapter.groupNames.get(groupPosition).toString());
-                maintenanceIntent.putExtra("vehicleID", adapter.dbGroupIds[groupPosition].toString());
+                maintenanceIntent.putExtra("vehicleName", adapter.groupNames.get(groupPosition));
+                maintenanceIntent.putExtra("vehicleID", adapter.dbGroupIds[groupPosition]);
                 startActivity(maintenanceIntent);
                 return false;
             }

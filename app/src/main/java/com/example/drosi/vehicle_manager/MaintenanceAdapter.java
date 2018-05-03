@@ -1,6 +1,7 @@
 package com.example.drosi.vehicle_manager;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,10 +44,10 @@ public class MaintenanceAdapter extends ArrayAdapter<MaintenanceData> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.maint_row, parent, false);
 
-            viewHolder.txtDate = (TextView) convertView.findViewById(R.id.maintenanceDate);
-            viewHolder.txtMileage = (TextView) convertView.findViewById(R.id.txtMileage);
-            viewHolder.txtNotes = (TextView) convertView.findViewById(R.id.notes);
-            viewHolder.txtType = (TextView) convertView.findViewById(R.id.type);
+            viewHolder.txtDate = convertView.findViewById(R.id.maintenanceDate);
+            viewHolder.txtMileage = convertView.findViewById(R.id.txtMileage);
+            viewHolder.txtNotes = convertView.findViewById(R.id.notes);
+            viewHolder.txtType = convertView.findViewById(R.id.type);
 
             result = convertView;
 

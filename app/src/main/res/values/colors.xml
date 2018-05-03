@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#ff4081</color>
+    <color name="jan">#6B5B95</color>
+    <color name="feb">#CE3175</color>
+    <color name="mar">#C0AB8E</color>
+    <color name="apr">#EC9787</color>
+    <color name="may">#BC70A4</color>
+    <color name="jun">#00A591</color>
+    <color name="jul">#944743</color>
+    <color name="aug">#2E4A62</color>
+    <color name="sep">#672E3B</color>
+    <color name="oct">#ECDB54</color>
+    <color name="nov">#E94B3C</color>
+    <color name="dec">#B76BA3</color>
 </resources>

@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/maintenanceDate" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -51,7 +51,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/str_type"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintEnd_toStartOf="@+id/spType"
         app:layout_constraintTop_toBottomOf="@+id/txtMileage" />
 
     <EditText
@@ -81,7 +81,7 @@
         android:inputType="text|textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spType" />
 
     <Button
         android:id="@+id/btnCancel"
