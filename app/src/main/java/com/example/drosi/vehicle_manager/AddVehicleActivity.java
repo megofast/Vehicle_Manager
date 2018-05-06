@@ -62,6 +62,7 @@ public class AddVehicleActivity extends AppCompatActivity {
             // Toast the user for a successful insert
             Toast.makeText(this, "Data successfully added.", Toast.LENGTH_LONG).show();
             startActivity(new Intent(AddVehicleActivity.this, MainActivity.class));
+            finish();
         } else {
             Toast.makeText(this, "An error occurred adding vehicle.", Toast.LENGTH_LONG).show();
         }

@@ -102,7 +102,11 @@ public class AddMaintenanceActivity extends AppCompatActivity {
                 if (insertStatus) {
                     // Toast the user for a successful insert
                     Toast.makeText(getApplicationContext(), "Data successfully added.", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(AddMaintenanceActivity.this, VehicleSummaryActivity.class));
+                    Intent mIntent = new Intent(AddMaintenanceActivity.this, VehicleSummaryActivity.class);
+                    mIntent.putExtra("vehicleName", vName);
+                    mIntent.putExtra("vehicleID", VID);
+                    startActivity(mIntent);
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "An error occurred adding vehicle.", Toast.LENGTH_LONG).show();
                 }

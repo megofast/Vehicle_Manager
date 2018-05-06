@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,8 +24,7 @@ public class VehicleSummaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vehicle_summary);
 
         // Declare activity elements
-        Button btnBack = findViewById(R.id.btnBack);
-        ListView maintenanceList = findViewById(R.id.lstMaintenance);
+        final ListView maintenanceList = findViewById(R.id.lstMaintenance);
         TextView vehicleTitle = findViewById(R.id.txtVehicleName);
 
         // Get the bundle of data sent from the MainActivity
@@ -42,12 +43,23 @@ public class VehicleSummaryActivity extends AppCompatActivity {
             Log.i("BUNNDLEERROR", "There was an error getting the bundle");
         }
 
+        // We need to get the data from the getMaintenanceData so we can insert it into the adapter
+        final ArrayList<MaintenanceData> data = getMaintenanceData();
+
+        // Create the adapter using the data
+        final MaintenanceAdapter adapter = new MaintenanceAdapter(data, VehicleSummaryActivity.this);
+
+        // Setup the delete buttons on the adapter
+        adapter.setupDeleteButtons(data.size());
+
+        // Bind the adapter to the listview
+        maintenanceList.setAdapter(adapter);
+
         FloatingActionButton fab = findViewById(R.id.fabAddMaintenance);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Open the addVehicle activity
-                //startActivity(new Intent(VehicleSummaryActivity.this, AddMaintenanceActivity.class));
                 Intent maintenanceIntent = new Intent(VehicleSummaryActivity.this, AddMaintenanceActivity.class);
                 maintenanceIntent.putExtra("vehicleName", vName);
                 maintenanceIntent.putExtra("vehicleID", VID);
@@ -55,16 +67,28 @@ public class VehicleSummaryActivity extends AppCompatActivity {
             }
         });
 
-        // Add click listener for back button
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        // Setup fab to remove vehicles from the list
+        FloatingActionButton fabRemove = findViewById(R.id.fabRemoveMaintenance);
+        fabRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                // Make the red Xs visible on the list
+                ArrayList<ImageView> deleteButtons = adapter.getDeleteButtons();
+                Log.i("QUANTITY", String.valueOf(deleteButtons.size()));
+                for (ImageView delete : deleteButtons) {
+                    Log.i("INSIDE", "INSIDE");
+                    if (delete.getVisibility() == View.INVISIBLE) {
+                        delete.setVisibility(View.VISIBLE);
+                        Log.i("VISIBLE", "VISIBLE");
+                    } else if (delete.getVisibility() == View.VISIBLE) {
+                        delete.setVisibility(View.INVISIBLE);
+                        Log.i("DELETE", "DELETE");
+                    } else {
+                        Log.i("WTF", "WTF!!??");
+                    }
+                }
             }
         });
-
-        final MaintenanceAdapter adapter = new MaintenanceAdapter(getMaintenanceData(), getApplicationContext());
-        maintenanceList.setAdapter(adapter);
     }
 
     // Get the data from the database and create an arraylist with the data
@@ -73,7 +97,8 @@ public class VehicleSummaryActivity extends AppCompatActivity {
         Cursor data = mDatabaseHelper.getData("SELECT * FROM " + MaintenanceTable.getTableName()
                 + " WHERE " + MaintenanceTable.getColumnVid() + " = " + VID);
         ArrayList<MaintenanceData> mData = new ArrayList<>();
-        String vid, date, mileage, type, notes;
+        String id, vid, date, mileage, type, notes;
+
         // Loop through all the data
         while (data.moveToNext()) {
             // COLUMN 0 - ID
@@ -82,12 +107,13 @@ public class VehicleSummaryActivity extends AppCompatActivity {
             // COLUMN 3 - mileage
             // COLUMN 4 - type
             // COLUMN 5 - notes
+            id = data.getString(0);
             vid = data.getString(1);
             date = data.getString(2);
             mileage = data.getString(3);
             type = data.getString(4);
             notes = data.getString(5);
-            mData.add(new MaintenanceData(vid, date, mileage, type, notes));
+            mData.add(new MaintenanceData(id, vid, date, mileage, type, notes));
 
         }
         return mData;

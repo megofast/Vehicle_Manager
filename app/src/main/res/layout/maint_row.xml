@@ -51,14 +51,15 @@
 
     <TextView
         android:id="@+id/monthLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="85dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/apr"
         android:paddingHorizontal="10dp"
-        android:paddingVertical="10dp"
-        android:text="Apr"
+        android:paddingVertical="15dp"
+        android:text="May"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,4 +78,18 @@
         app:layout_constraintStart_toEndOf="@+id/monthLogo"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@mipmap/ic_vehicle" />
+
+    <ImageView
+        android:id="@+id/imgDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@android:drawable/ic_delete" />
+
 </android.support.constraint.ConstraintLayout>
