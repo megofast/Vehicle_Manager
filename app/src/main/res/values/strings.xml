@@ -48,4 +48,10 @@
         <item>Shocks/Struts</item>
         <item>Other</item>
     </string-array>
+    <string name="low_storage_error">Unable to start barcode scanner, low storage...</string>
+    <string name="no_camera_permission">Unable to start scanner, no camera permissions given.</string>
+    <string name="str_no_barcode_error">Unable to read barcode.</string>
+    <string name="str_scan_tip">Click to scan vin.</string>
+
+    <string name="ok">ok</string>
 </resources>
